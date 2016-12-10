@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <form method="post" action="{{ url_for('blood.edit_post', id=m.id) }}">
+
+        <div class="form-group">
+            <div>
+                <label class=col-sm-2 control-labelfor="pulse"
+                       class="col-sm-2 control-label">Tętno</label>
+
+                <div class="col-sm-10"><input class="form-control"
+                                              id="pulse"
+                                              type="number"
+                                              min="20"
+                                              max="300"
+                                              name="pulse"
+                                              required
+                                              title="Tętno"
+                value="{{ m.pulse }}">
+                </div>
+
+
+                <div>
+                    <label class=col-sm-2
+                           control-labelfor="systolic">Ciśnienie skurczowe</label>
+                    <div class="col-sm-10"><input class="form-control"
+                                                  id="systolic" name="systolic"
+                                                  type="number"
+                                                  required
+                                                  title="Ciśnienie skurczowe"
+                    value="{{ m.systolic }}">
+                    </div>
+                </div>
+                <div>
+                    <label class=col-sm-2 control-labelfor="diastolic">Ciśnienie rozkurczowe</label>
+                    <div class="col-sm-10"><input class="form-control"
+                                                  id="diastolic"
+                                                  name="diastolic"
+                                                  type="number" required
+                                                  min="30"
+                                                  max="350"
+                                                  title="Ciśnienie rozkurczowe"
+                     value="{{ m.diastolic}}">
+                    </div>
+                </div><div>
+                    <label class=col-sm-2 control-labelfor="time">Data pomiaru</label>
+                    <div class="col-sm-10"><input class="form-control"
+                                                  id="date"
+                                                  name="date"
+                                                  required
+                                                  type="date"
+                                                  title="Data pomiaru"
+
+                     value="{{ m.date.strftime('%Y-%m-%d')}}">
+                    </div>
+                </div>
+                <div>
+                    <label class=col-sm-2 control-labelfor="time">Godzina pomiaru</label>
+                    <div class="col-sm-10"><input class="form-control"
+                                                  id="time"
+                                                  name="time"
+                                                  required
+
+                                                  type="time"
+                                                  title="Godzina pomiaru"
+
+                     value="{{m.date.strftime('%H:%M')}}">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <button type="submit">Zmodyfikuj pomiar</button>
+
+    </form>
+{% endblock %}

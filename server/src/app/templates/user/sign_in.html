@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+   <form method="post">
+        <fieldset>
+            <ul>
+                <li>
+                    <label for="username">Nazwa użytkownika</label>
+                    <input id="username" name="username" type="text">
+                </li>
+                <li>
+                    <label for="password">Hasło</label>
+                    <input id="password" type="password" name="password" >
+                </li>
+            </ul>
+            <button type="submit">Zaloguj</button>
+        </fieldset>
+
+    </form>
+
+{% endblock %}

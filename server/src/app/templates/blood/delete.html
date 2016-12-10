@@ -1,0 +1,9 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <p>Na pewno?</p>
+    <form method="post" action="{{ url_for('blood.delete_post', id=m.id) }}">
+
+        <button type="submit">Usuń pomiar</button>
+
+    </form>
+{% endblock %}

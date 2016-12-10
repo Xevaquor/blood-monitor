@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block body %}
+    <table>
+        <img src="{{ url_for('blood.plot', from_date=from_date, to_date=to_date) }}"/>
+        <tbody>
+        {% for m in rows %}
+            <tr>
+                <td>{{ m.date}}</td>
+                <td>{{ m.pulse }}</td>
+                <td>{{ m.systolic }}</td>
+                <td>{{ m.diastolic }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
