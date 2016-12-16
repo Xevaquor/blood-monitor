@@ -10,7 +10,7 @@ pu = PasswordUtil()
 
 def user_exists(username):
     users = User.query.filter_by(name=username).all()
-    if users:
+    if len(users) > 0:
         return True
     return False
 
