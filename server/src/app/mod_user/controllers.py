@@ -1,4 +1,4 @@
-from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for, abort
+from flask import Blueprint, request, render_template, flash, g, session, redirect, url_for, abort, jsonify
 
 from app import db
 
@@ -8,10 +8,9 @@ from app.pass_utils import PasswordUtil
 
 from app.model.validator import *
 
-from app.mod_auth.autorization_required import requires_sign_in, requires_not_signed_in, \
-    requires_admin
+from app.mod_auth.autorization_required import requires_sign_in, requires_not_signed_in
 from app.repo import user_repo
-from app.repo.user_repo import valid_password
+from app.repo.user_repo import valid_password, is_rest_call
 
 mod_user = Blueprint('user', __name__, url_prefix='/user')
 
@@ -25,6 +24,21 @@ def sign_up():
 @mod_user.route('/signup', methods=['POST'])
 @requires_not_signed_in()
 def create():
+    if is_rest_call(request):
+        username = request.json.get('username')
+        password = request.json.get('password')
+        password_confirmation = password
+        pu = PasswordUtil()
+        user = User()
+        user.name = username
+        user.salt = pu.generate_salt()
+        user.password = pu.hash_password(password, user.salt)
+
+        db.session.add(user)
+        db.session.commit()
+
+        return jsonify({'status' : 'success'}), 200
+
     username = request.form['username']
     password = request.form['password']
     password_confirmation = request.form['password_confirmation']

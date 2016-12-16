@@ -9,7 +9,7 @@ from flask import send_file
 from app.mod_auth.autorization_required import requires_sign_in
 from app.model.entities import Measurement
 from app.repo import blood_repo
-from app.repo.user_repo import is_rest_call, get_rest_user_id
+from app.repo.user_repo import is_rest_call, get_rest_user_id, get_rest_user_id_by_name
 
 mod_blood = Blueprint('blood', __name__, url_prefix='/blood')
 
@@ -53,13 +53,18 @@ def report_post():
 
 
 @mod_blood.route('/report/plot/', methods=['GET'])
-@requires_sign_in()
-def plot(from_date='1900-01-01', to_date='2999-11-11'):
+def plot(from_date='1900-01-01', to_date='2999-11-11',username=''):
+    username = request.args.get('username','')
+    uid = session.get('user_id', -1)
+    if uid == -1:
+        uid = get_rest_user_id_by_name(username)
+        from_date = request.args.get('from','1900-01-01')
+        to_date = request.args.get('to', '2900-01-01')
     from_date = parser.parse(from_date)
     to_date = parser.parse(to_date)
     # if from_date is None and to_date is None
 
-    rows = blood_repo.get_by_date(session['user_id'], from_date=from_date, to_date=to_date)
+    rows = blood_repo.get_by_date(uid, from_date=from_date, to_date=to_date)
     fig, ax = plt.subplots(1)
     x = [x.date for x in rows]
     y = [x.pulse for x in rows]
@@ -86,7 +91,7 @@ def create_post():
         errors = blood_repo.add(xd)
         if errors:
             return abort(400)
-        return '', 201
+        return jsonify(dict()), 201
 
     pulse = request.form['pulse']
     systolic = request.form['systolic']
@@ -114,6 +119,9 @@ def create_post():
 @mod_blood.route('/<id>', methods=['GET'])
 @requires_sign_in()
 def edit_form(id):
+    if is_rest_call(request):
+        m = blood_repo.get_by_id(id)
+        return jsonify(m.serialize()), 200
     m = blood_repo.get_by_id(id)
     return render_template('blood/edit.html', m=m)
 
@@ -128,7 +136,7 @@ def edit_post(id):
         errors = blood_repo.update(m)
         if errors:
             return abort(400)
-        return '', 204
+        return jsonify(dict({"status" : "edited"})), 200
 
     pulse = request.form['pulse']
     systolic = request.form['systolic']
@@ -163,6 +171,6 @@ def delete_post(id):
         errors = blood_repo.delete(m)
         if errors:
             return abort(400)
-        return '', 204
+        return jsonify(dict({"status" : "removed"})), 200
     blood_repo.delete(blood_repo.get_by_id(id))
     return redirect(url_for('blood.index'))

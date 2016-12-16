@@ -43,3 +43,6 @@ def is_rest_call(request):
 def get_rest_user_id(request):
     if valid_password(request.authorization.username, request.authorization.password):
         return User.query.filter_by(name=request.authorization.username).first().id
+
+def get_rest_user_id_by_name(name):
+    return User.query.filter_by(name=name).first().id
