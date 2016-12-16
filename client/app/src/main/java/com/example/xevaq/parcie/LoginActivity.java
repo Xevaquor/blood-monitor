@@ -9,6 +9,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -70,18 +71,11 @@ public class LoginActivity extends AppCompatActivity {
                         // Commit the edits!
                         editor.commit();
 
-                        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(ctx);
-                        dlgAlert.setMessage("Zalogowano! ");
+
+                        Toast.makeText(ctx, "Zalogowano", Toast.LENGTH_SHORT).show();
 //                        dlgAlert.setTitle("App Title");
-                        dlgAlert.setPositiveButton("OK",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //dismiss the dialog
-                                        finish();
-                                    }
-                                });
-                        dlgAlert.setCancelable(true);
-                        dlgAlert.create().show();
+                        finish();
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -92,17 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                         SharedPreferences settings = getSharedPreferences("PARCIE_LOGIN_INFO", 0);
                         SharedPreferences.Editor editor = settings.edit();
                         editor.putBoolean("logged in", GlobalConfig.getInstance().isLoggedIn());
-                        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(ctx);
-                        dlgAlert.setMessage("Nie udało się zalogować!");
-//                        dlgAlert.setTitle("App Title");
-                        dlgAlert.setPositiveButton("OK",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //dismiss the dialog
-                                    }
-                                });
-                        dlgAlert.setCancelable(true);
-                        dlgAlert.create().show();
+                        Toast.makeText(ctx, "Porażka logowania :x", Toast.LENGTH_SHORT).show();
                     }
                 }
         ){

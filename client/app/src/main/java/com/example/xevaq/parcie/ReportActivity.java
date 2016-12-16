@@ -88,7 +88,7 @@ public class ReportActivity extends AppCompatActivity {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String myFormat = "yyyy-MM-dd"; // your format
+                String myFormat = "dd-MM-yyyy"; // your format
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
                 ((EditText) viewOrig).setText(sdf.format(myCalendar.getTime()));
             }

@@ -2,6 +2,7 @@ package com.example.xevaq.parcie;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.res.ColorStateList;
 import android.provider.CalendarContract;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -43,6 +45,7 @@ public class AddActivity extends AppCompatActivity {
     private int measurementID;
     RequestQueue queue;
     TextView tvStatus;
+    Context ctx;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +59,15 @@ public class AddActivity extends AppCompatActivity {
         etDiastolic = (EditText)findViewById(R.id.etAddDiastolic);
         tvStatus = (TextView)findViewById(R.id.tvAddStatus);
 
+        Context ctx = this;
+
         queue = Volley.newRequestQueue(this);
         setNow();
     }
 
     public void setNow(){
         Calendar now = Calendar.getInstance();
-        String myFormat = "dd MMMM yyyy"; // your format
+        String myFormat = "dd-MM-yyyy"; // your format
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
         etDate.setText(sdf.format(now.getTime()));
         myFormat = "HH:mm"; // your format
@@ -79,7 +84,7 @@ public class AddActivity extends AppCompatActivity {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String myFormat = "dd MMMM yyyy"; // your format
+                String myFormat = "dd-MM-yyyy"; // your format
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
 
                 etDate.setText(sdf.format(myCalendar.getTime()));
@@ -104,7 +109,7 @@ public class AddActivity extends AppCompatActivity {
 
     }
 
-    public void onBtnClicked(View view){
+    public void onBtnClicked(final View view){
         JSONObject body = new JSONObject();
         try {
             MeasurementValidator mv = new MeasurementValidator();
@@ -114,7 +119,7 @@ public class AddActivity extends AppCompatActivity {
                     etDate.getText().toString(),
                     etTime.getText().toString()
             )){
-                tvStatus.setText("Niepoprawne dane");
+                Toast.makeText(this, "Niepoprawne dane", Toast.LENGTH_SHORT).show();
             }
 
             body.put("pulse", etPulse.getText().toString());
@@ -137,13 +142,14 @@ public class AddActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         System.out.println(response.toString());
-                        tvStatus.setText("Dodano!");
+                        Toast.makeText(view.getContext(), "Dodano", Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        System.out.println(error.toString());
+                        Toast.makeText(view.getContext(), "Błąd  :c", Toast.LENGTH_SHORT).show();
                     }
                 }
         ){

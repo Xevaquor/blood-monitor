@@ -117,6 +117,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         GlobalConfig.getInstance().setLoggedIn(true);
                         setButtonsVisibility();
+                        Toast.makeText(ctx, "Zalogowano jako "+GlobalConfig.getInstance().getLogin(), Toast.LENGTH_SHORT).show();
+
                     }
                 },
                 new Response.ErrorListener() {
@@ -207,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("login", GlobalConfig.getInstance().getLogin());
         editor.putString("password", GlobalConfig.getInstance().getPassword());
         editor.putBoolean("logged in", GlobalConfig.getInstance().isLoggedIn());
+        Toast.makeText(ctx, "Wylogowano", Toast.LENGTH_SHORT).show();
 
         // Commit the edits!
         editor.commit();

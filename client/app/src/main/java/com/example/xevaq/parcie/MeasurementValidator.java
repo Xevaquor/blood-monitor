@@ -21,7 +21,7 @@ public class MeasurementValidator {
             int nsystolic = Integer.parseInt(systolic);
             int ndiastolic = Integer.parseInt(diastolic);
             String datestring = date + " " + time;
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy hh:mm");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy hh:mm");
             dateFormat.parse(datestring);
 
 

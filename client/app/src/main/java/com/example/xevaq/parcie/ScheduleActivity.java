@@ -105,7 +105,7 @@ public class ScheduleActivity extends AppCompatActivity {
                     cal.set(Calendar.HOUR_OF_DAY, xd.get(Calendar.HOUR_OF_DAY));
                     cal.set(Calendar.MINUTE, xd.get(Calendar.MINUTE));
                     scheduleClient.setAlarmForNotification(cal);
-                    Toast.makeText(this, "set", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Ustawiono!", Toast.LENGTH_SHORT).show();
                 } catch (ParseException e1) {
                     e1.printStackTrace();
                 }

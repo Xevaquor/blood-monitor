@@ -13,6 +13,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -137,7 +138,7 @@ public class ModifyActivity extends AppCompatActivity {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String myFormat = "dd MMMM yyyy"; // your format
+                String myFormat = "dd-MM-yyyy"; // your format
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
 
                 etDate.setText(sdf.format(myCalendar.getTime()));
@@ -172,7 +173,8 @@ public class ModifyActivity extends AppCompatActivity {
                     etDate.getText().toString(),
                     etTime.getText().toString()
             )) {
-                tvStatus.setText("DUPA");
+                Toast.makeText(ctx, "Nieproawne dane", Toast.LENGTH_SHORT).show();
+
             }
 
             body.put("pulse", etPulse.getText().toString());
@@ -194,6 +196,8 @@ public class ModifyActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Toast.makeText(ctx, "Uaktualniono", Toast.LENGTH_SHORT).show();
+
                         System.out.println(response.toString());
                         setResult(1, new Intent());
                         finish();
@@ -203,6 +207,8 @@ public class ModifyActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         System.out.println(error.toString());
+                        Toast.makeText(ctx, "Fail  :c", Toast.LENGTH_SHORT).show();
+
                     }
                 }
         ) {
@@ -236,34 +242,16 @@ public class ModifyActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(ctx);
-                        dlgAlert.setMessage("Usunięto");
-//                        dlgAlert.setTitle("App Title");
-                        dlgAlert.setPositiveButton("OK",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //dismiss the dialog
-                                    }
-                                });
-                        dlgAlert.setCancelable(true);
-                        dlgAlert.create().show();
+                        Toast.makeText(ctx, "usunięto", Toast.LENGTH_SHORT).show();
+
+
                         finish();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        AlertDialog.Builder dlgAlert = new AlertDialog.Builder(ctx);
-                        dlgAlert.setMessage("Błąd! " + error.toString());
-//                        dlgAlert.setTitle("App Title");
-                        dlgAlert.setPositiveButton("OK",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        //dismiss the dialog
-                                    }
-                                });
-                        dlgAlert.setCancelable(true);
-                        dlgAlert.create().show();
+                        Toast.makeText(ctx, "Błąd  :c", Toast.LENGTH_SHORT).show();
                     }
                 }
         ) {
