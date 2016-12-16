@@ -13,8 +13,10 @@ from app.repo.user_repo import is_rest_call, get_rest_user_id, get_rest_user_id_
 
 mod_blood = Blueprint('blood', __name__, url_prefix='/blood')
 
-import matplotlib.pyplot as plt
+import matplotlib
 
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 @mod_blood.route('/', methods=['GET'])
 @requires_sign_in()
