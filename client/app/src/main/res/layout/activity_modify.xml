@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_modify"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.xevaq.parcie.ModifyActivity">
+
+    <Button
+        android:text="Popraw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="onBtnModifyClicked" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/etModifyDiastolic"
+        android:layout_below="@+id/etModifySystolic"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/tvModifySystolic" />
+
+    <TextView
+        android:text="Skurczowe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvModifySystolic"
+        android:layout_below="@+id/tbModifyPulse"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="36dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/etModifyPulse"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Tętno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tbModifyPulse"
+        android:layout_alignBaseline="@+id/etModifyPulse"
+        android:layout_alignBottom="@+id/etModifyPulse"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/etModifyPulse" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/etModifySystolic"
+        android:layout_below="@+id/etModifyPulse"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/tvModifySystolic" />
+
+    <TextView
+        android:text="Rozkurczowe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_alignBottom="@+id/etModifyDiastolic"
+        android:layout_alignEnd="@+id/tvModifySystolic" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/etTimeModify"
+        android:onClick="onTimeClicked"
+        android:hint="czas"
+        android:layout_below="@+id/etDateModify"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/etDateModify"
+        android:hint="data"
+        android:onClick="onDateClicked"
+        android:focusable="false"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text=""
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvModifyStatus"
+        android:layout_above="@+id/btnModifyMeasurement"
+        android:layout_toStartOf="@+id/etModifyDiastolic" />
+
+    <Button
+        android:text="Usuń"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnModifyMeasurement"
+        android:onClick="onBtnDeleteClicked"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>

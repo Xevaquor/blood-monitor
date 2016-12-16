@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Parcie</string>
+    <string name="title_activity_add">AddActivity</string>
+    <string name="action_settings">Settings</string>
+</resources>

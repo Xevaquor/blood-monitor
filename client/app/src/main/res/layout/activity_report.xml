@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_report"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.xevaq.parcie.ReportActivity">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/etReportFrom"
+        android:layout_alignParentEnd="true"
+        android:hint="Od"
+        android:onClick="onDateClicked2"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:layout_below="@+id/etReportFrom"
+        android:layout_alignParentStart="true"
+        android:id="@+id/etReportTo"
+        android:layout_alignParentEnd="true"
+        android:hint="Do"
+        android:onClick="onDateClicked2"/>
+
+    <Button
+        android:text="Pokaż"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etReportTo"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/btnReportShow"
+        android:onClick="btnGetReportClick"/>
+
+    <ImageView
+        android:layout_width="500px"
+        android:layout_height="500px"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/btnReportShow"
+        android:layout_alignParentStart="true"
+        android:adjustViewBounds="true"/>
+</RelativeLayout>
