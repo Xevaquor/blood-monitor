@@ -26,7 +26,7 @@ class UniqueUsernameValidator(object):
         self.username_func = username
 
     def validate(self):
-        if user_exists(self.username_func()):
+        if not user_exists(self.username_func()):
             return [], True
         else:
             return [ValidationError('Użytkownik o podanym adresie e-mail już istnieje!')], False
