@@ -1,2 +1,7 @@
 server/.idea/
 server/src/flask_session/
+server/src/.idea/inspectionProfiles/profiles_settings.xml
+server/src/.idea/misc.xml
+server/src/.idea/modules.xml
+server/src/.idea/src.iml
+server/src/.idea/workspace.xml

@@ -43,6 +43,10 @@ def create():
     password = request.form['password']
     password_confirmation = request.form['password_confirmation']
 
+    print(username)
+    print(password)
+    print(password_confirmation)
+
     validator = CombinedValidator(validators=[
         PasswordValidator(lambda: password, lambda: password_confirmation),
         UniqueUsernameValidator(lambda: username)
