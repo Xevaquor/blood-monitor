@@ -54,9 +54,9 @@ public class MeasurementAdapter extends ArrayAdapter<Measurement> {
 
         Measurement m = data.get(position);
         holder.tvDate.setText(m.getDate().toString());
-        holder.tvDiastolic.setText(String.valueOf(m.getDiastolic()));
-        holder.tvSystolic.setText(String.valueOf(m.getSystolic()));
-        holder.tvPulse .setText(String.valueOf(m.getPulse()));
+        holder.tvSystolic.setText("Skurczowe: " + String.valueOf(m.getSystolic()));
+        holder.tvDiastolic.setText("Rozkurczowe: " + String.valueOf(m.getDiastolic()));
+        holder.tvPulse .setText("Tętno: " + String.valueOf(m.getPulse()));
         holder.id = m.getId();
 
         return row;
