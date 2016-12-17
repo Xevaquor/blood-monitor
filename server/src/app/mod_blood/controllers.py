@@ -71,7 +71,10 @@ def plot(from_date='1900-01-01', to_date='2999-11-11',username=''):
     x = [x.date for x in rows]
     y = [x.pulse for x in rows]
     plt.plot(x, y)
+    plt.plot(x, [x.systolic for x in rows])
+    plt.plot(x, [x.diastolic for x in rows])
     plt.xticks(x, [x.date.strftime('%d-%m') for x in rows], rotation='vertical')
+    plt.legend(['Tetno', 'Skurczowe', 'Rozkurczowe'])
     img = BytesIO()
     fig.savefig(img)
     img.seek(0)

@@ -21,7 +21,7 @@ def get_by_date(user_id, from_date=None, to_date=None):
         to_date = datetime.datetime.combine(to_date, datetime.time(23, 59))
         measurements = measurements.filter(Measurement.date <= to_date)
 
-    return list(measurements)
+    return list(measurements.order_by(Measurement.date))
 
 
 def get_all(user_id):
