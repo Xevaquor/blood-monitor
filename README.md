@@ -11,3 +11,4 @@ NEED FIX:
 1. Generowanie wykresu w części webowej. Filtrowanie dat nie działa. Na mobilnej działa.
 2. Skala X wykresu
 3. Przyciski w części mobilnej, położenie (dostaniemy uwagi na mejla)
+4. Podstawianie aktualnej daty przy dodawaniu nowego wpisu/filtrowaniu.
