@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-    <title>Kwadrat</title>
+    <title>BloodMoon</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
           integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -34,7 +34,7 @@
 {#                    <li><a href="{{ url_for('offer.search') }}">Szukaj ofert</a></li>#}
 
                 {% if 'username' in session %}
-                    <li><a href="{{ url_for('blood.index') }}">Moje oferty</a></li>
+                    <li><a href="{{ url_for('blood.index') }}">Moje pomiary</a></li>
                     <li><a href="{{ url_for('blood.create_form') }}">Dodaj pomiar</a></li>
                     <li><a href="{{ url_for('blood.report_form') }}">Wygeneruj raport</a></li>
 
@@ -68,15 +68,6 @@
     {% endif %}
 {% endwith %}
 {% block body %}{% endblock %}
-
-{% if 'recent' in session %}
-<p>Ostatnio przeglądane oferty:</p>
-    <ul>
-    {% for d in session['recent'] %}
-        <li><a href="{{ url_for('offer.show_offer', offer_id=d.offer_id) }}">{{ d.city }}, {{ d.street }} za {{ d.price }}zł</a></li>
-    {% endfor %}
-</ul>
-{% endif %}
 
 </div>
 </body>
