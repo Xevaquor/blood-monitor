@@ -29,7 +29,8 @@ def index():
 @mod_blood.route('/create', methods=['GET'])
 @requires_sign_in()
 def create_form():
-    return render_template('blood/create.html')
+    return render_template('blood/create.html', nowdate=datetime.datetime.now().strftime('%Y-%m-%d'),
+                           nowtime=datetime.datetime.now().strftime('%H:%M'),)
 
 
 @mod_blood.route('/report', methods=['GET'])

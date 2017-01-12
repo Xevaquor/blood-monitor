@@ -39,13 +39,14 @@
                                                   title="Ciśnienie rozkurczowe">
                     </div>
                 </div><div>
-                    <label class=col-sm-2 control-labelfor="time">Data pomiaru</label>
+                    <label class=col-sm-2 control-labelfor="date">Data pomiaru</label>
                     <div class="col-sm-10"><input class="form-control"
                                                   id="date"
                                                   name="date"
                                                   required
                                                   type="date"
-                                                  title="Data pomiaru">
+                                                  title="Data pomiaru"
+                    value="{{ nowdate }}">
                     </div>
                 </div>
                 <div>
@@ -56,7 +57,8 @@
                                                   required
 
                                                   type="time"
-                                                  title="Godzina pomiaru">
+                                                  title="Godzina pomiaru"
+                    value="{{ nowtime }}">
                     </div>
                 </div>
 
