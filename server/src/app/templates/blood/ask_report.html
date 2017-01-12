@@ -1,4 +1,7 @@
 {% extends 'layout.html' %}
+{% block head %}
+
+{% endblock %}
 {% block body %}
     <form method="post" action="{{ url_for('blood.report_post') }}"
     >
@@ -20,7 +23,8 @@
                                                   id="to"
                                                   name="to"
                                                   type="date"
-                                                  title="Od dnia">
+                                                  title="Od dnia"
+                    value="2017-02-06">
                     </div>
                 </div>
 

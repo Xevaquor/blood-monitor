@@ -60,8 +60,8 @@ def plot(from_date='1900-01-01', to_date='2999-11-11',username=''):
     uid = session.get('user_id', -1)
     if uid == -1:
         uid = get_rest_user_id_by_name(username)
-        from_date = request.args.get('from','1900-01-01')
-        to_date = request.args.get('to', '2900-01-01')
+    from_date = request.args.get('from_date','1900-01-01')
+    to_date = request.args.get('to_date', '2900-01-01')
     from_date = parser.parse(from_date)
     to_date = parser.parse(to_date)
     # if from_date is None and to_date is None
@@ -73,7 +73,15 @@ def plot(from_date='1900-01-01', to_date='2999-11-11',username=''):
     plt.plot(x, y)
     plt.plot(x, [x.systolic for x in rows])
     plt.plot(x, [x.diastolic for x in rows])
-    plt.xticks(x, [x.date.strftime('%d-%m') for x in rows], rotation='vertical')
+    d1 = from_date
+    d2 = to_date
+
+    delta = d2 - d1
+    datas=[]
+    for i in range(delta.days + 1):
+        datas.append(d1 + datetime.timedelta(days=i))
+
+    plt.xticks(datas, [x.strftime('%d-%m') for x in datas], rotation='vertical')
     plt.legend(['Tetno', 'Skurczowe', 'Rozkurczowe'],loc=2)
     img = BytesIO()
     fig.savefig(img)
