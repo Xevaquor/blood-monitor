@@ -35,7 +35,9 @@ def create_form():
 @mod_blood.route('/report', methods=['GET'])
 @requires_sign_in()
 def report_form():
-    return render_template('blood/ask_report.html')
+    return render_template('blood/ask_report.html',
+                           nowdate=datetime.datetime.now().strftime('%Y-%m-%d'),
+                           olddate=(datetime.datetime.now() - datetime.timedelta(days=7)).strftime('%Y-%m-%d'))
 
 
 @mod_blood.route('/report', methods=['POST'])
