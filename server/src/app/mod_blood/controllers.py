@@ -63,8 +63,8 @@ def plot(from_date='1900-01-01', to_date='2999-11-11',username=''):
     uid = session.get('user_id', -1)
     if uid == -1:
         uid = get_rest_user_id_by_name(username)
-    from_date = request.args.get('from_date','1900-01-01')
-    to_date = request.args.get('to_date', '2900-01-01')
+    from_date = request.args.get('from_date','2016-01-01')
+    to_date = request.args.get('to_date', '2018-01-01')
     from_date = parser.parse(from_date)
     to_date = parser.parse(to_date)
     # if from_date is None and to_date is None
@@ -76,8 +76,8 @@ def plot(from_date='1900-01-01', to_date='2999-11-11',username=''):
     plt.plot(x, y)
     plt.plot(x, [x.systolic for x in rows])
     plt.plot(x, [x.diastolic for x in rows])
-    d1 = from_date
-    d2 = to_date
+    d1 = rows[0].date
+    d2 = rows[-1].date
 
     delta = d2 - d1
     datas=[]
