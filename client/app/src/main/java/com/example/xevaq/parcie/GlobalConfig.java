@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 public class GlobalConfig {
     private static GlobalConfig mInstance = null;
 
-    private String endpoint = "http://ec2-54-200-171-216.us-west-2.compute.amazonaws.com:8080";
+    private String endpoint = "http://ec2-54-200-120-210.us-west-2.compute.amazonaws.com:8080";
     private String login = "";
     private String password = "";
     private boolean loggedIn = false;

@@ -120,6 +120,7 @@ public class AddActivity extends AppCompatActivity {
                     etTime.getText().toString()
             )){
                 Toast.makeText(this, "Niepoprawne dane", Toast.LENGTH_SHORT).show();
+               return;
             }
 
             body.put("pulse", etPulse.getText().toString());

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.RequestQueue;
@@ -20,9 +21,13 @@ import com.android.volley.toolbox.Volley;
 
 import java.net.URI;
 import java.security.GuardedObject;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+
+import uk.co.senab.photoview.PhotoViewAttacher;
 
 public class ReportActivity extends AppCompatActivity {
 
@@ -42,11 +47,26 @@ public class ReportActivity extends AppCompatActivity {
         etTo = (EditText) findViewById(R.id.etReportTo);
         iv = (ImageView) findViewById(R.id.imageView);
 
+        final Calendar myCalendar = Calendar.getInstance();
+        String myFormat = "yyyy-MM-dd"; // your format
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
+        (etFrom).setText(sdf.format(myCalendar.getTime()));
+
+        final Calendar myCalendar2 = Calendar.getInstance();
+        myCalendar2.add(Calendar.DAY_OF_YEAR, 7);
+        String myFormat2 = "yyyy-MM-dd"; // your format
+        SimpleDateFormat sdf2 = new SimpleDateFormat(myFormat2, Locale.getDefault());
+        (etTo).setText(sdf2.format(myCalendar2.getTime()));
+
         queue = Volley.newRequestQueue(this);
         queue.start();
 
         ImageLoader mImageLoader;
         NetworkImageView mNetworkImageView;
+
+        PhotoViewAttacher pAttacher;
+        pAttacher = new PhotoViewAttacher(iv);
+        pAttacher.update();
 
 // Get the NetworkImageView that will display the image.
 //        mNetworkImageView = (NetworkImageView) findViewById(R.id.networkImageView);
@@ -60,7 +80,18 @@ public class ReportActivity extends AppCompatActivity {
     }
 
     public void btnGetReportClick(View view) {
-        String builtUrl = IMAGE_URL + "&from="+etFrom.getText().toString()+"&to="+etTo.getText().toString();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date fromDate = format.parse(etFrom.getText().toString());
+            Date toDate = format.parse(etTo.getText().toString());
+            if(fromDate.after(toDate)){
+                Toast.makeText(this,  "Niepoprawne daty!", Toast.LENGTH_SHORT).show();
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String builtUrl = IMAGE_URL + "&from_date="+etFrom.getText().toString()+"&to_date="+etTo.getText().toString();
+        Toast.makeText(this, "Pobieram...", Toast.LENGTH_SHORT).show();
         ImageRequest request = new ImageRequest(builtUrl,
                 new Response.Listener<Bitmap>() {
                     @Override
@@ -88,7 +119,7 @@ public class ReportActivity extends AppCompatActivity {
                 myCalendar.set(Calendar.YEAR, year);
                 myCalendar.set(Calendar.MONTH, monthOfYear);
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String myFormat = "dd-MM-yyyy"; // your format
+                String myFormat = "yyyy-MM-dd"; // your format
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
                 ((EditText) viewOrig).setText(sdf.format(myCalendar.getTime()));
             }
