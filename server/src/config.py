@@ -4,7 +4,7 @@ import os
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
 #SQLALCHEMY_DATABASE_URI = 'postgresql+pg8000://iwm:iwm@localhost:5432/iwm'
-SQLALCHEMY_DATABASE_URI = 'postgresql+pg8000://iwm:rootroot@iwm-db.cgtkfsh055iq.us-west-2.rds.amazonaws.com:5432/iwm'
+SQLALCHEMY_DATABASE_URI = 'postgresql+pg8000://iwm:rootroot@iwm.cgtkfsh055iq.us-west-2.rds.amazonaws.com:5432/iwm'
 DATABASE_CONNECT_OPTIONS = {}
 
 THREADS_PER_PAGE = 2
