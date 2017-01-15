@@ -65,8 +65,15 @@ def plot(from_date='1900-01-01', to_date='2999-11-11',username=''):
         uid = get_rest_user_id_by_name(username)
     from_date = request.args.get('from_date','2016-01-01')
     to_date = request.args.get('to_date', '2018-01-01')
-    from_date = parser.parse(from_date)
-    to_date = parser.parse(to_date)
+    if from_date == '':
+        from_date = datetime.datetime.now()
+    else:
+        from_date = parser.parse(from_date)
+
+    if to_date == '':
+        to_date = datetime.datetime.now() - datetime.timedelta(days=7)
+    else:
+        to_date = parser.parse(to_date)
     # if from_date is None and to_date is None
 
     rows = blood_repo.get_by_date(uid, from_date=from_date, to_date=to_date)
