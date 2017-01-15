@@ -18,16 +18,51 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"/>
 
+
+    <Button
+        android:text="Zapisz!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="onOkClicked"
+        android:id="@+id/btnScheduleApply" />
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/etScheduleTimes"
+        android:layout_width="wrap_content"
+        android:text="1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Do kiedy?"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/etScheduleTimes"
+        android:layout_alignParentStart="true" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="time"
+        android:inputType="date"
         android:ems="10"
-        android:id="@+id/editText6"
-        android:layout_below="@+id/editText4"
-        android:layout_alignParentStart="true"
+        android:id="@+id/etLastAlarm"
+        android:onClick="onDateClicked"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true" />
 
-        android:onClick="onTimeClicked"/>
+    <TextView
+        android:text="Godzny alarmów"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/etLastAlarm"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -36,7 +71,7 @@
         android:ems="10"
         android:onClick="onTimeClicked"
         android:id="@+id/editText2"
-        android:layout_below="@+id/etScheduleTimes"
+        android:layout_below="@+id/textView4"
         android:layout_alignParentStart="true" />
 
     <EditText
@@ -64,29 +99,21 @@
         android:layout_height="wrap_content"
         android:inputType="time"
         android:ems="10"
+        android:id="@+id/editText6"
+
+        android:onClick="onTimeClicked"
+        android:layout_below="@+id/editText4"
+        android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
         android:onClick="onTimeClicked"
         android:id="@+id/editText5"
         android:layout_below="@+id/editText6"
         android:layout_alignParentStart="true" />
 
-    <Button
-        android:text="Zapisz!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="onOkClicked"
-        android:id="@+id/btnScheduleApply" />
-
-    <EditText
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/etScheduleTimes"
-        android:layout_width="wrap_content"
-        android:text="1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/textView" />
 
 </RelativeLayout>

@@ -79,6 +79,7 @@ public class ReportActivity extends AppCompatActivity {
 //        mNetworkImageView.setImageUrl(IMAGE_URL, mImageLoader);
     }
 
+
     public void btnGetReportClick(View view) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         try {
