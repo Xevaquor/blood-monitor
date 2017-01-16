@@ -1,16 +1,18 @@
 # blood-monitor
 
-0. Interfejs WWW jest dostępny pod (Chrome)
+## Interfejs WWW
+
+Interfejs WWWjest dostępny pod (Chrome)
 
 http://ec2-54-200-120-210.us-west-2.compute.amazonaws.com:8080/user/signin
 
 Przykładowe dane do logowania to: jaro/jaro
 
-1. Baza danych
+## Baza danych
 
 PostgreSQL. Używaliśmy amazon RDS, ze względu na brak konieczności ręcznej instalacji.
 
-2. Serwer
+## Serwer
 
 Dane do bazy danych są w pliku config.py
 
@@ -28,7 +30,7 @@ $ python3 run.py
 
 Serwer będzie nasłuchiwał na porcie 8080
 
-3. Klient
+## Klient
 
 Dostępna jest binarka w katalogu głównym projektu. Projekt można skompilować przy użyciu Android Studio
 
