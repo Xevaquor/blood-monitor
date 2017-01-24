@@ -9,7 +9,15 @@ textarea {
 }
 
 td {
-    border: solid 1px black;
+    border: solid 1px #494A48;
     border-collapse: collapse;
     padding: 3px;
+}
+
+tr:nth-child(2n+1) {
+ background-color: #D4D4D4;
+}
+
+tr:nth-child(2n) {
+  background-color: #B6E0A8;
 }

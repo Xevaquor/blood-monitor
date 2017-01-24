@@ -1,16 +1,17 @@
 {% extends 'layout.html' %}
 {% block body %}
     <table>
-    <thead>
+    <tr>
         <td>Data pomiaru</td>
         <td>Tętno</td>
         <td>Ciśnienie skurczowe</td>
         <td>Ciśnienie rozkurczowe</td>
-    </thead>
-        <tbody>
+        <td>Edytuj</td>
+        <td>Usuń</td>
+    </tr>
         {% for m in measurements %}
             <tr>
-                <td>{{ m.date.strftime('%d-%m-%Y %H:%M')}}</td>
+                <td>{{ m.date.strftime('%Y-%m-%d %H:%M')}}</td>
                 <td>{{ m.pulse }}</td>
                 <td>{{ m.systolic }} mm/Hg</td>
                 <td>{{ m.diastolic }} mm/Hg</td>
@@ -18,6 +19,5 @@
                 <td><a href="{{ url_for('blood.delete_form', id=m.id) }}">Usuń</a></td>
             </tr>
         {% endfor %}
-        </tbody>
     </table>
 {% endblock %}

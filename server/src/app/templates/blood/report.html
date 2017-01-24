@@ -3,9 +3,15 @@
     <table>
         <img src="{{ url_for('blood.plot', from_date=from_date, to_date=to_date) }}"/>
         <tbody>
+          <tr>
+              <td>Data pomiaru</td>
+              <td>Tętno</td>
+              <td>Ciśnienie skurczowe</td>
+              <td>Ciśnienie rozkurczowe</td>
+          </tr>
         {% for m in rows %}
             <tr>
-                <td>{{ m.date}}</td>
+                <td>{{ m.date.strftime('%Y-%m-%d %H:%M')}}</td>
                 <td>{{ m.pulse }}</td>
                 <td>{{ m.systolic }}</td>
                 <td>{{ m.diastolic }}</td>
