@@ -27,16 +27,8 @@
         android:id="@+id/etModifyDiastolic"
         android:layout_below="@+id/etModifySystolic"
         android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/tvModifySystolic" />
-
-    <TextView
-        android:text="Skurczowe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tvModifySystolic"
-        android:layout_below="@+id/tbModifyPulse"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="36dp" />
+        android:layout_toEndOf="@+id/tvModifySystolic"
+        android:layout_alignStart="@+id/etModifySystolic" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -57,47 +49,6 @@
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/etModifyPulse" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/etModifySystolic"
-        android:layout_below="@+id/etModifyPulse"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/tvModifySystolic" />
-
-    <TextView
-        android:text="Rozkurczowe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView3"
-        android:layout_alignBottom="@+id/etModifyDiastolic"
-        android:layout_alignEnd="@+id/tvModifySystolic" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="time"
-        android:ems="10"
-        android:id="@+id/etTimeModify"
-        android:onClick="onTimeClicked"
-        android:hint="czas"
-        android:layout_below="@+id/etDateModify"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/etDateModify"
-        android:hint="data"
-        android:onClick="onDateClicked"
-        android:focusable="false"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true" />
-
     <TextView
         android:text=""
         android:layout_width="wrap_content"
@@ -114,5 +65,78 @@
         android:onClick="onBtnDeleteClicked"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/etModifySystolic"
+        android:layout_below="@+id/etModifyPulse"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/etModifyPulse" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/etDateModify"
+        android:hint="data"
+        android:onClick="onDateClicked"
+        android:focusable="false"
+        android:layout_below="@+id/etModifyDiastolic"
+        android:layout_toEndOf="@+id/tvModifyStatus" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="time"
+        android:ems="10"
+        android:id="@+id/etTimeModify"
+        android:onClick="onTimeClicked"
+        android:hint="czas"
+        android:layout_below="@+id/etDateModify"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="Skurczowe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvModifySystolic"
+        android:layout_alignBaseline="@+id/etModifySystolic"
+        android:layout_alignBottom="@+id/etModifySystolic"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/etModifySystolic" />
+
+    <TextView
+        android:text="Rozkurczowe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:layout_alignBaseline="@+id/etModifyDiastolic"
+        android:layout_alignBottom="@+id/etModifyDiastolic"
+        android:layout_alignEnd="@+id/tvModifyStatus"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Czas pomiaru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView8"
+        android:layout_alignBaseline="@+id/etTimeModify"
+        android:layout_alignBottom="@+id/etTimeModify"
+        android:layout_alignStart="@+id/textView3"
+        android:layout_alignEnd="@+id/tvModifyStatus" />
+
+    <TextView
+        android:text="Data pomiaru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:layout_alignBaseline="@+id/etDateModify"
+        android:layout_alignBottom="@+id/etDateModify"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/etDateModify" />
 
 </RelativeLayout>

@@ -28,7 +28,7 @@ class Measurement(db.Model):
             'diastolic': self.diastolic,
             'user_id': self.user_id,
             'date': self.date,
-            'only_date': self.date.strftime('%d-%m-%y'),
+            'only_date': self.date.strftime('%d-%m-%Y'),
             'only_time': self.date.strftime('%H:%M')
         }
 

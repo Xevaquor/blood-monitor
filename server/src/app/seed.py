@@ -13,7 +13,7 @@ logging.getLogger('sqlalchemy.engine').setLevel(logging.ERROR)
 fake = Factory.create('pl_PL')
 
 AMOUNT_OF_USERS = 500
-AMOUNT_OF_MEASUREMENTS = 30
+AMOUNT_OF_MEASUREMENTS = 45
 
 pu = PasswordUtil()
 
@@ -35,7 +35,7 @@ for _ in range(AMOUNT_OF_MEASUREMENTS):
     m.systolic = random.randint(100,120)
     m.diastolic = random.randint(80,90)
     m.pulse = random.randint(60,80)
-    m.date = datetime.datetime(2016,12, _ % 30+1, _ * 3 % 24, _ * 7 % 60)
+    m.date = datetime.datetime(2017,1 % 2+1, _ % 30+1, _ * 3 % 24, _ * 7 % 60)
     m.user_id = admin.id
 
     app.db.session.add(m)

@@ -11,22 +11,14 @@
     tools:context="com.example.xevaq.parcie.MainActivity">
 
     <Button
-        android:text="Przeglądaj"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/btnMainBrowse"
-    android:onClick="btnMainBrowseClick"
-    android:layout_alignParentTop="true"
-    android:layout_centerHorizontal="true" />
-
-    <Button
         android:text="Dodaj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnMainAdd"
         android:onClick="btnMainAddClick"
         android:layout_below="@+id/btnMainBrowse"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="Raport"
@@ -35,7 +27,8 @@
         android:id="@+id/btnMainReport"
         android:onClick="btnMainReportClick"
         android:layout_below="@+id/btnMainAdd"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="Harmonogram"
@@ -44,7 +37,8 @@
         android:id="@+id/btnMainSchedule"
         android:onClick="btnMainScheduleClick"
         android:layout_below="@+id/btnMainReport"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="Zaloguj się"
@@ -53,7 +47,8 @@
         android:id="@+id/btnMainLogin"
         android:onClick="btnMainLoginClick"
         android:layout_below="@+id/btnMainSchedule"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="Zarejestruj się"
@@ -62,7 +57,8 @@
         android:id="@+id/btnMainRegister"
         android:onClick="btnMainRegisterClick"
         android:layout_below="@+id/btnMainLogin"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="Wyloguj się"
@@ -71,6 +67,17 @@
         android:id="@+id/btnMainLogout"
         android:onClick="btnLogoutClick"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="Przeglądaj"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/btnMainBrowse"
+    android:onClick="btnMainBrowseClick"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

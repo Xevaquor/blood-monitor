@@ -50,13 +50,13 @@ public class ReportActivity extends AppCompatActivity {
         final Calendar myCalendar = Calendar.getInstance();
         String myFormat = "yyyy-MM-dd"; // your format
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.getDefault());
-        (etFrom).setText(sdf.format(myCalendar.getTime()));
+        (etTo).setText(sdf.format(myCalendar.getTime()));
 
         final Calendar myCalendar2 = Calendar.getInstance();
-        myCalendar2.add(Calendar.DAY_OF_YEAR, 7);
+        myCalendar2.add(Calendar.DAY_OF_YEAR, -7);
         String myFormat2 = "yyyy-MM-dd"; // your format
         SimpleDateFormat sdf2 = new SimpleDateFormat(myFormat2, Locale.getDefault());
-        (etTo).setText(sdf2.format(myCalendar2.getTime()));
+        (etFrom).setText(sdf2.format(myCalendar2.getTime()));
 
         queue = Volley.newRequestQueue(this);
         queue.start();

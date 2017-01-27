@@ -31,7 +31,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
-    private RequestQueue queue;
+    public static RequestQueue queue;
     AppCompatActivity ctx;
 
     ScheduleClient scheduleClient;
@@ -51,6 +51,16 @@ public class MainActivity extends AppCompatActivity {
         GlobalConfig.getInstance().setPassword(settings.getString("password", ""));
         queue = Volley.newRequestQueue(this);
         queue.start();
+
+
+        findViewById(R.id.btnMainAdd).setEnabled(false);
+        findViewById(R.id.btnMainBrowse).setEnabled(false);
+        findViewById(R.id.btnMainReport).setEnabled(false);
+        findViewById(R.id.btnMainSchedule).setEnabled(false);
+        findViewById(R.id.btnMainLogout).setEnabled(false);
+        findViewById(R.id.btnMainLogin).setEnabled(false);
+        findViewById(R.id.btnMainRegister).setEnabled(false);
+
 
         isLoggedIn();
 
@@ -104,6 +114,15 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btnMainLogout).setVisibility(logged ? View.VISIBLE : View.GONE);
         findViewById(R.id.btnMainLogin).setVisibility(logged ? View.GONE : View.VISIBLE);
         findViewById(R.id.btnMainRegister).setVisibility(logged ? View.GONE : View.VISIBLE);
+
+
+        findViewById(R.id.btnMainAdd).setEnabled(true);
+        findViewById(R.id.btnMainBrowse).setEnabled(true);
+        findViewById(R.id.btnMainReport).setEnabled(true);
+        findViewById(R.id.btnMainSchedule).setEnabled(true);
+        findViewById(R.id.btnMainLogout).setEnabled(true);
+        findViewById(R.id.btnMainLogin).setEnabled(true);
+        findViewById(R.id.btnMainRegister).setEnabled(true);
     }
 
     private void isLoggedIn() {

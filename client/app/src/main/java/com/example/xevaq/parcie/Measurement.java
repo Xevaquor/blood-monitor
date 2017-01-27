@@ -1,6 +1,8 @@
 package com.example.xevaq.parcie;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by xevaq on 11-Dec-16.
@@ -12,6 +14,8 @@ public class Measurement {
     private int systolic;
     private int diastolic;
     private Date date;
+    private String onlyDate;
+    private String onlyTime;
 
     public Measurement(int id, int pulse, int systolic, int diastolic, Date date) {
         this.id = id;
@@ -59,5 +63,21 @@ public class Measurement {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getOnlyDate() {
+        return onlyDate;
+    }
+
+    public void setOnlyDate(String onlyDate) {
+        this.onlyDate = onlyDate;
+    }
+
+    public String getOnlyTime() {
+        return onlyTime;
+    }
+
+    public void setOnlyTime(String onlyTime) {
+        this.onlyTime = onlyTime;
     }
 }

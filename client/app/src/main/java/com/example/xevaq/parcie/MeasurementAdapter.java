@@ -12,7 +12,12 @@ import android.widget.TextView;
 import com.example.xevaq.parcie.Measurement;
 import com.example.xevaq.parcie.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
+
+import static android.view.View.GONE;
 
 /**
  * Created by xevaq on 11-Dec-16.
@@ -53,10 +58,19 @@ public class MeasurementAdapter extends ArrayAdapter<Measurement> {
         }
 
         Measurement m = data.get(position);
-        holder.tvDate.setText(m.getDate().toString());
-        holder.tvSystolic.setText("Skurczowe: " + String.valueOf(m.getSystolic()));
-        holder.tvDiastolic.setText("Rozkurczowe: " + String.valueOf(m.getDiastolic()));
-        holder.tvPulse .setText("Tętno: " + String.valueOf(m.getPulse()));
+        ;
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(m.getDate());
+        cal.setTimeZone(TimeZone.getDefault());
+        SimpleDateFormat format = new SimpleDateFormat("dd-MM-YYYY hh:mm");
+        holder.tvDate.setText("");
+        holder.tvSystolic.setText("Tętno: " + String.valueOf(m.getPulse()) +" Skurczowe: " + String.valueOf(m.getSystolic())+ " " + "Rozkurczowe: " + String.valueOf(m.getDiastolic()));
+        holder.tvDiastolic.setText("");
+        holder.tvPulse .setText(m.getOnlyDate() + " " + m.getOnlyTime());
+        holder.tvDate.setVisibility(GONE);
+        holder.tvDiastolic.setVisibility(GONE);
+
+
         holder.id = m.getId();
 
         return row;

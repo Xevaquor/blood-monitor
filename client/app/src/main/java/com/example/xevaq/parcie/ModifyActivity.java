@@ -61,6 +61,8 @@ public class ModifyActivity extends AppCompatActivity {
         etDiastolic = (EditText) findViewById(R.id.etModifyDiastolic);
         tvStatus = (TextView) findViewById(R.id.tvModifyStatus);
 
+        etPulse.requestFocus();
+
         queue = Volley.newRequestQueue(this);
         measurementID = getIntent().getIntExtra("ENTRY_ID", 0);
 
@@ -173,7 +175,7 @@ public class ModifyActivity extends AppCompatActivity {
                     etDate.getText().toString(),
                     etTime.getText().toString()
             )) {
-                Toast.makeText(ctx, "Nieproawne dane", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ctx, "Niepoprawne dane", Toast.LENGTH_SHORT).show();
 
             }
 

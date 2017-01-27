@@ -43,6 +43,7 @@ public class BrowseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         queue = Volley.newRequestQueue(this);
+//        queue = MainActivity.queue;
         setContentView(R.layout.activity_browse);
         openDetails = new Intent(this, ModifyActivity.class);
         adapter = new MeasurementAdapter(this, R.layout.list_item, results);
@@ -88,13 +89,18 @@ public class BrowseActivity extends AppCompatActivity {
                         for (int i = 0; i < rows.length(); i++){
                             JSONObject o = (JSONObject) rows.get(i);
                             Date d = new Date();
-                            results.add(new Measurement(o.getInt("id"),
+                            Measurement m = new Measurement(o.getInt("id"),
                                     o.getInt("pulse"),
                                     o.getInt("systolic"),
                                     o.getInt("diastolic"),
                                     new Date(o.getString("date"))
 
-                                    ));
+                            );
+                            m.setOnlyDate(o.getString("only_date"));
+                            m.setOnlyTime(o.getString("only_time"));
+
+                                    results.add(m
+                                    );
                         adapter.notifyDataSetChanged();
 
                         }
@@ -108,6 +114,7 @@ public class BrowseActivity extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             System.out.println("O SIET");
+                            update(adapter);
                         }
                     }
             ){

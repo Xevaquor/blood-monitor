@@ -61,6 +61,8 @@ public class AddActivity extends AppCompatActivity {
 
         Context ctx = this;
 
+        etPulse.requestFocus();
+
         queue = Volley.newRequestQueue(this);
         setNow();
     }
